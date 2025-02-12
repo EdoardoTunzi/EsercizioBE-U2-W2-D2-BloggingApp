@@ -67,4 +67,14 @@ public class PostService {
         result.setTempoDiLettura(post.getTempoDiLettura());
         return result;
     }
+
+    public void deletePostById(long id) {
+        Optional<Post> result = getPostById(id);
+        if (result.isPresent()) {
+            postRepo.deleteById(id);
+        } else {
+            throw new RuntimeException("Nessun utente con questo id da poter eliminare");
+        }
+
+    }
 }

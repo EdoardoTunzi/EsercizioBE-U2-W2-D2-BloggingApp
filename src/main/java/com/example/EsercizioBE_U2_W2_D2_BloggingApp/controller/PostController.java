@@ -27,7 +27,7 @@ public class PostController {
         return postService.getPostById(id);
     }
 
-   /* @PostMapping("/")
+   /* @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public String newPost(@RequestBody PostDTO postDTO) {
        postService.addPost(postDTO);
@@ -43,17 +43,15 @@ public class PostController {
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Post updatePost(@PathVariable int id, @RequestBody Post post) {
-        postService.updatePostById(id,post);
+        return postService.updatePostById(id,post);
+
     }
 
-    /*@DeleteMapping("/{id}")
+    @DeleteMapping("/{id}")
     public String updatePost(@PathVariable int id) {
-        Post postModificare = blogPosts.stream()
-                .filter(blogpost -> blogpost.getId() == id)
-                .findFirst().get();
-        blogPosts.remove(postModificare);
-        return "Post cancellato";
-    }*/
+        postService.deletePostById(id);
+        return "Post con id " + id + "eliminato con successo";
+    }
 
 
 }
