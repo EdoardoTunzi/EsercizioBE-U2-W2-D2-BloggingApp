@@ -20,6 +20,7 @@ public class Post {
     private String contenuto;
     private int tempoDiLettura;
     @ManyToOne
+    @JoinColumn(name = "autore_id")
     private Autore autore;
 
     public Post(String categoria, String titolo, String contenuto, int tempoDiLettura) {

@@ -1,5 +1,6 @@
 package com.example.EsercizioBE_U2_W2_D2_BloggingApp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,8 +25,9 @@ public class Autore {
     private String email;
     private LocalDate dataDiNascita;
     private String avatar = null;
-    @OneToMany(mappedBy = "autore")
-    private List<Post> listaPosts = new ArrayList<Post>();
+    @OneToMany(mappedBy = "autore", cascade = CascadeType.REMOVE)
+    @JsonIgnore
+    private List<Post> listaPosts;
 
     public Autore(String nome, String cognome, String email, LocalDate dataDiNascita) {
         this.nome = nome;
