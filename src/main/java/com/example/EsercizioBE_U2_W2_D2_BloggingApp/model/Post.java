@@ -16,7 +16,7 @@ public class Post {
     private long id;
     private String categoria;
     private String titolo;
-    private String cover = null;
+    private String cover;
     private String contenuto;
     private int tempoDiLettura;
     @ManyToOne

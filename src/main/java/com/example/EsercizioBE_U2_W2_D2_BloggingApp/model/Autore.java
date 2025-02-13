@@ -24,7 +24,7 @@ public class Autore {
     private String cognome;
     private String email;
     private LocalDate dataDiNascita;
-    private String avatar = null;
+    private String avatar;
     @OneToMany(mappedBy = "autore", cascade = CascadeType.REMOVE)
     @JsonIgnore
     private List<Post> listaPosts;
