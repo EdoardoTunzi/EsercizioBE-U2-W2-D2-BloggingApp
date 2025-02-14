@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -46,8 +47,9 @@ public class AutoreController {
 
     //ok
     @PostMapping
-    public String nuovoAutore(@RequestBody Autore nuovoAutore) {
-        Long idGenerato = autoreService.addAutore(nuovoAutore);
+    @ResponseStatus(HttpStatus.CREATED)
+    public String nuovoAutore(@RequestBody @Validated AutoreDTO nuovoAutoreDTO) {
+        Long idGenerato = autoreService.addAutore(nuovoAutoreDTO);
         return "Autore inserito in DB con id: " + idGenerato;
     }
    //ok
